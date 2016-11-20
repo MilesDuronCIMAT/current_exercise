@@ -24,14 +24,9 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - pip install flake8 selenium coverage coveralls
+  - pip install selenium
   - pip install -r requiremenst.txt
 
 script:
-  - flake8
-  - coverage run manage.py test
-  - coverage report
-  - coverage html -d coverage
-
-after_script:
-  - coveralls
+  - python3 manage.py test lists
+  - python3 manage.py test functional_tests
