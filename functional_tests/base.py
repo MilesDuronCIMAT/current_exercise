@@ -18,7 +18,7 @@ class FunctionalTest(StaticLiveServerTestCase):
 
     def setUp(self):
         #browser = webdriver.Chrome('/path/to/chromedriver')
-        self.browser = webdriver.Chrome('/home/miles/ejercicios_libro/chromedriver')
+        self.browser = webdriver.Chrome('/usr/bin/chromedriver')
         self.browser.implicitly_wait(3)
 
     def tearDown(self):
