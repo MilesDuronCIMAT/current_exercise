@@ -1,0 +1,37 @@
+language: python
+dist: trusty
+
+python:
+  - 3.5
+
+sudo: required
+
+addons:
+  apt:
+    packages:
+      - libappindicator1
+      - fonts-liberation
+      - chromium-browser
+      - chromium-chromedriver
+
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - wget http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - sudo chmod u+x chromedriver
+  - sudo mv chromedriver /usr/bin/
+  - sh -e /etc/init.d/xvfb start
+
+install:
+  - pip install flake8 selenium coverage coveralls
+  - pip install -r requirements.txt
+
+script:
+  - flake8
+  - coverage run manage.py test
+  - coverage report
+  - coverage html -d coverage
+
+after_script:
+  - coveralls
