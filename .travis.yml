@@ -25,7 +25,7 @@ before_install:
 
 install:
   - pip install flake8 selenium coverage coveralls
-  - pip install -r requirements.txt
+  - pip install -r requiremenst.txt
 
 script:
   - flake8
